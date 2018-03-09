@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<header class="masthead">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto" style="    padding-top: 150px;">
+                    <img style="width : 300px;" src="{{ asset('img/Logo_Itrip.png') }}">
+                    <p class="intro-text white">Espaces insolites, tranquilité d'esprit.<br>Organisez vos vacances avec vos amis.</p>
+                    <form  action="{{ path('search')  }}" method="GET">
+                        <div class="input-group" id="adv-search">
+                            <input type="text" name="loc" class="form-control" placeholder="Rechercher un voyage" />
+                            <div class="input-group-btn">
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></input>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#voyage" class="btn btn-circle js-scroll-trigger">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+   
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 margin-header">
+                <h1 class="text-center blue bold"> Nos Voyages </h1>
+            </div>
+        </div>
+        {{ include('pack/display_packs.html.twig') }}
+        
+        <div class="row">
+            <div class="col-12 margin-header">
+                <h1 id="partenaire"  class="text-center blue bold "> Nos Partenaires </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img class="col-12" src="{{asset('img/partenaire/logo_airbnb.png')}}"></img>
+            </div>
+            <div class="col-3">
+                <img class="col-12 " src="{{asset('img/partenaire/logo_kayak.png')}}"></img>
+            </div>
+            <div class="col-3">
+                <img class="col-12" src="{{asset('img/partenaire/logo_airbnb.png')}}"></img>
+            </div>
+            <div class="col-3">
+                <img class="col-12" src="{{asset('img/partenaire/logo_kayak.png')}}"></img>
+            </div>
+        </div>
+
+      </div>
+      
+{% endblock %}
+
+

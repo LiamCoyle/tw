@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Notations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idutilisateur</th>
+                <th>Idpack</th>
+                <th>Date</th>
+                <th>Note</th>
+                <th>Commentaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for notation in notations %}
+            <tr>
+                <td><a href="{{ path('notation_show', { 'id': notation.id }) }}">{{ notation.id }}</a></td>
+                <td>{{ notation.idUtilisateur }}</td>
+                <td>{{ notation.idPack }}</td>
+                <td>{% if notation.date %}{{ notation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ notation.note }}</td>
+                <td>{{ notation.commentaire }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('notation_show', { 'id': notation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('notation_edit', { 'id': notation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('notation_new') }}">Create a new notation</a>
+        </li>
+    </ul>
+{% endblock %}

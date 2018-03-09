@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pack</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pack.id }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if pack.dateDebut %}{{ pack.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idloc</th>
+                <td>{{ pack.idLoc }}</td>
+            </tr>
+            <tr>
+                <th>Idpartenaire</th>
+                <td>{{ pack.idPartenaire }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if pack.dateFin %}{{ pack.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ pack.prix }}</td>
+            </tr>
+            <tr>
+                <th>Nbpersonne</th>
+                <td>{{ pack.nbPersonne }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ pack.nom }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ pack.lien }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ pack.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pack_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pack_edit', { 'id': pack.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

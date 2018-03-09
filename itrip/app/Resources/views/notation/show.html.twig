@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Notation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ notation.id }}</td>
+            </tr>
+            <tr>
+                <th>Idutilisateur</th>
+                <td>{{ notation.idUtilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Idpack</th>
+                <td>{{ notation.idPack }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if notation.date %}{{ notation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ notation.note }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ notation.commentaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('notation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('notation_edit', { 'id': notation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<div class="content" >
+{{ form_start(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.mail) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+
+    <button type="submit">S'inscrire</button>
+{{ form_end(form) }}
+</div>
+</div>
+{% endblock %}

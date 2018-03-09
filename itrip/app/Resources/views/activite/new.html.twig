@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="content">
+    <h1>Activite creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Crée" />
+    {{ form_end(form) }}
+
+    
+            <a href="{{ path('voyage_show', {'id': idVoyage }) }}">Retour au voyage</a>
+       
+</div></div>
+{% endblock %}

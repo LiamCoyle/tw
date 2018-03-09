@@ -1,0 +1,38 @@
+
+
+<link rel="stylesheet" href="{{ asset('css/grayscale.css') }}" />
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+    
+        <a class="navbar-brand js-scroll-trigger" href="{{ path('homepage') }}"><img style="width : 120px;" src="{{ asset('img/Logo_Itrip.png') }}"></a>
+   
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    {%if is_granted('ROLE_USER') %}
+                        <a class="nav-link js-scroll-trigger" href="{{ path('user_homepage') }}">Mes Voyages</a>
+                    {% else %}
+                        <a class="nav-link js-scroll-trigger" href="{{ path('pack_index') }}">Nos Voyages</a>
+                    {% endif %}
+                </li>
+                {% if not is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#partenaire">Partenaires</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    {%if is_granted('ROLE_USER') %}
+                        <a class="nav-link js-scroll-trigger" href="{{ path('logout') }}">Deconnexion</a>
+                    {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                        <a class="nav-link js-scroll-trigger" href="{{ path('login') }}">Connexion</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

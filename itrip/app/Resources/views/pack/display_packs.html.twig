@@ -1,0 +1,112 @@
+
+
+<div class="container-fluid">
+    <div class="row  mx-auto navigation">
+	<div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+        {% for pack in packs %}
+            {% if loop.first %}
+			<div class="carousel-item active col-10 offset-1 col-md-4 offset-md-4">
+            {% else %}
+            <div class="carousel-item  col-10 offset-1 col-md-4 offset-md-4">
+            {% endif %}
+                <div class="card-displaycard">
+                    <a class="black" href="{{pack.lien}}">
+                        <img class="card-img-top-displaycard" src="{{asset('img/pack/'~pack.id~'/thumbnail.jpg')}}" alt="Card image cap">
+                        <div class="card-block col-sm-12">
+                        <h4 class="card-title blue">{{pack.nom}}</h4>
+                        <div class="card-text ">
+                        <span class="italique small overflow ">{{pack.description}}</span></br>
+                        <span >{{pack.nbPersonne}} personnes</span></br>
+                        <span >{{pack.prix}} €</span></br>
+                        {{pack.dateDebut| date('d/m/Y')}} au {{pack.dateFin| date('d/m/Y')}}</div>
+                        </div>
+                        </a>
+                </div>
+			</div>
+
+        {% endfor %}
+		</div>
+		<a class="carousel-control-prev"  href="#recipeCarousel" role="button" data-slide="prev">
+			<i class="blue fa fa-chevron-left big"></i>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next"  href="#recipeCarousel" role="button" data-slide="next">
+			<i class="blue fa fa-chevron-right big"></i>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+
+</div>
+
+
+{% block stylesheets %}
+<style>
+
+
+.card-displaycard{
+    margin: 10px;
+    border:1px;
+    border-style:solid;
+    height: 370px;
+    
+}
+
+
+.big{font-size : 60px;}
+
+
+.carousel-inner > .carousel-item > .card  {
+  margin: auto;
+}
+.card-img-top-displaycard{
+    width: 100%;
+    
+}
+
+
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-left.active {
+  transform: translateX(-50%);
+}
+.carousel-inner .carousel-item-right.active {
+  transform: translateX(50%);
+}
+
+.carousel-inner .carousel-item-next {
+  transform: translateX(50%)
+}
+.carousel-inner .carousel-item-prev {
+  transform: translateX(-50%)
+}
+  
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+
+}
+</style>
+{% endblock %}
+{% block javascripts %}
+<script>
+
+    /*$('#recipeCarousel').carousel({
+        interval: 50000
+    });*/
+    $('.carousel-item').first().addClass( "active" );
+
+    $('.carousel .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+        next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    });
+
+
+</script>
+{% endblock %}

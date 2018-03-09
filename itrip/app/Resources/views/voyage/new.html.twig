@@ -1,0 +1,18 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<div class="content">
+    <h1>Voyage creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Crée" />
+    {{ form_end(form) }}
+
+    
+<a href="{{ path('user_homepage') }}">Retour à la liste</a>
+ </div >   
+ </div >    
+{% endblock %}

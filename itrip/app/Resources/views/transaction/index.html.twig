@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<div class="content">
+    <h1>Transactions list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th scope="col">Date de la transaction</th>
+                <th scope="col">Valeur</th>
+                <th scope="col">Utilisateur</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                
+                
+                <td >{% if transaction.dateTransaction %}{{ transaction.dateTransaction|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ transaction.valeur }}</td>
+                <td>{{ transaction.username }}</td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <div class="row">
+   <div class="col-12 text-center">
+    <a class="" href="{{ path('transaction_new', {'idMoneyPot' : idMoneyPot} ) }}">Contribué</a>
+    </div>
+    <a href="{{ path('voyage_show', {'id': idVoyage }) }}">Retour au voyage</a>
+</div>
+</div>
+</div>
+{% endblock %}

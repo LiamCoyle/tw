@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partenaires list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partenaire in partenaires %}
+            <tr>
+                <td><a href="{{ path('partenaire_show', { 'id': partenaire.id }) }}">{{ partenaire.id }}</a></td>
+                <td>{{ partenaire.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('partenaire_show', { 'id': partenaire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('partenaire_edit', { 'id': partenaire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('partenaire_new') }}">Create a new partenaire</a>
+        </li>
+    </ul>
+{% endblock %}
